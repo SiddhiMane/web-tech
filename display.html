@@ -1,0 +1,25 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "emp1";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$sql = "SELECT * from Employee1";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+ 
+    while($row = $result->fetch_assoc()) {
+        echo "Employee ID: " . $row["id"].  " -Employee name: " . $row["EmployeeName"].  " -Salary: " . $row["Salary"]. "<br>";
+    }
+} else {
+    echo "0 results";
+}
+$conn->close();
+?> 
